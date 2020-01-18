@@ -1,0 +1,59 @@
+@mixin create-container ($bg) {
+	display: block;
+	min-height: 100vh;
+
+	background: $bg;
+	position: relative;
+}
+
+@mixin flex-col() {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+}
+
+@mixin setToCenter($height: 100px) {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	height: $height;
+	text-align: center;
+	width: 100%;
+	margin: auto 0;
+}
+
+@mixin p-m($padding: 0, $margin: 0) { padding: $padding; margin: $margin; }
+
+@mixin btn-anim() {
+	position: relative;
+	z-index: 0;
+
+	.btn {
+		border: $bor;
+		transition: all 250ms ease;
+
+		&:before{
+    		position: absolute;
+		    content: '';
+		    width: 0%; height: 100%;
+		    top: 0;  left: auto; right: 0;
+		    background-color: $clr;
+		    z-index: -1;
+		    transition: all 250ms ease;
+		}
+
+		 &:hover{
+		 	color: white; 
+		    
+		    &:before{
+		      position: absolute;
+		      content: '';
+		      width: 100%; height: 100%;
+		      background-color: $clr;
+		      top: 0; left: 0; right: 0;
+		      z-index: -1;
+		    }
+		}
+	}
+}

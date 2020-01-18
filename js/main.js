@@ -35,6 +35,11 @@ hCont.querySelector('.button-item').addEventListener('click', function(event) {
 	menu.style.left = '100%';
 })
 
+window.addEventListener('scroll', function() {
+	if (window.pageYOffset > hCont.clientHeight) return menu.style.top = 0;
+	menu.style.top = hCont.clientHeight + 'px';
+} )
+
 menu.addEventListener('click', function(event){
 	if (event.target.tagName != 'A' || document.body.clientWidth > mobWidth) return;
 	menu.style.left = '100%';
@@ -92,12 +97,15 @@ class Service {
 
 
 	handleEvent(event) {
-		if ( event.target.tagName != 'I') return;
+		if ( event.target.tagName != 'SPAN' && event.target.tagName != 'I') return;
 
-		event.target.parentElement.hidden = true;
+		let btnSpan;
 
-		let btnSpan = event.target.parentElement,
-			div = btnSpan.parentElement,
+		( event.target.tagName == 'SPAN') ? btnSpan = event.target : btnSpan = event.target.parentElement;
+
+		btnSpan.hidden = true;
+
+		let div = btnSpan.parentElement,
 			li = div.parentElement,
 			ul = li.parentElement;
 
@@ -118,7 +126,7 @@ class Service {
 		li.style.background = '#b8ffeb';
 		li.style.color = 'black';
 
-		let pHeight = p.clientHeight + 'px'; 
+		let pHeight = p.clientHeight - 20 + 'px'; 
 		p.style.height = shortP.clientHeight + 'px';
 		setTimeout( () => p.style.height = pHeight, 0);
 
@@ -132,6 +140,13 @@ class Service {
 
 		li.style.backgroundColor = '';
 		li.style.color = '';
+
+		let pShortHeight = shortP.clientHeight - 20 + 'px'; 
+		
+
+		new Promise( function(resolve, reject) {
+			resolve(shortP.style.height = p.clientHeight + 'px');
+		} ).then( result => shortP.style.height = pShortHeight);
 
 		showBtn.hidden = false;
 	}
@@ -151,3 +166,44 @@ let service = new Service(servElem);
 	// service.setBG(bgURL);
 
 servElem.addEventListener('click', service);
+
+
+// contacts
+
+let contacts = document.querySelector('#contacts');
+
+class User {
+	constructor(form) {
+		this.form = form;
+	}
+
+	getName() {
+		return this.form.querySelector("[name='name']").value;
+	}
+
+	getEmail() {
+		return this.form.querySelector("[name='email']").value;
+	}
+}
+
+contacts.querySelector('form').onsubmit = ( function() {
+	this.style.opacity = '0';
+
+	this.addEventListener('transitionend', () => { 
+		this.hidden = true;
+
+		if (this.nextElementSibling) return;
+
+		let user = new User(this);
+
+		let mess = document.createElement('div');
+		this.after(mess);
+		mess.className = 'mess';
+		mess.innerHTML = `<span>Thanks, ${user.getName()}!</span>We will answer your quastion ASAP to email: ${user.getEmail()}</span>`;
+
+	})
+
+	return false;
+
+});
+

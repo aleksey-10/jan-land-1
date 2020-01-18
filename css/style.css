@@ -268,9 +268,12 @@ main #service {
       position: relative;
       background: #7c7785;
       width: 100%;
-      min-height: 350px;
+      min-height: 200px;
       background: #7c7785;
-      color: white; }
+      color: white;
+      -webkit-transition: all 0.25s;
+      -o-transition: all 0.25s;
+      transition: all 0.25s; }
       main #service ul li > div {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -295,7 +298,8 @@ main #service {
       main #service ul li h4 {
         text-align: left; }
       main #service ul li span {
-        text-transform: uppercase; }
+        text-transform: uppercase;
+        cursor: pointer; }
       main #service ul li p {
         overflow: hidden;
         -webkit-transition: height 0.5s;
@@ -313,9 +317,6 @@ main #service {
         -ms-grid-column: 2;
         -ms-grid-column-span: 2;
         grid-column: 2/4; }
-      main #service ul li:hover {
-        background-color: #b8ffeb;
-        color: black; }
       main #service ul li i {
         cursor: pointer;
         padding-left: 10px; }
@@ -325,6 +326,7 @@ main #contacts {
   min-height: 100vh;
   background: url("https://html5book.ru/wp-content/uploads/2016/09/background76.png");
   position: relative;
+  min-height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -342,11 +344,11 @@ main #contacts {
     flex-direction: row;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin-top: 100px; }
+    margin: 25px auto 75px auto; }
   main #contacts .cont {
     width: 500px;
     color: white;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.6);
     margin: 30px; }
     main #contacts .cont > div, main #contacts .cont form {
       display: -webkit-box;
@@ -359,11 +361,20 @@ main #contacts {
       -webkit-box-pack: center;
       -ms-flex-pack: center;
       justify-content: center;
-      margin: 40px; }
+      margin: 40px;
+      -webkit-transition: all 0.25s;
+      -o-transition: all 0.25s;
+      transition: all 0.25s; }
+    main #contacts .cont .mess {
+      height: 90%;
+      margin: 20px;
+      text-align: center; }
     main #contacts .cont a {
       color: white; }
+    main #contacts .cont a:hover {
+      text-decoration: underline; }
     main #contacts .cont iframe {
-      min-height: 250px; }
+      min-height: 300px; }
     main #contacts .cont input, main #contacts .cont textarea {
       background: none;
       border: none;
@@ -380,7 +391,8 @@ main #contacts {
     main #contacts .cont textarea {
       min-width: 96%;
       max-width: 96%;
-      min-height: 100px; }
+      min-height: 150px;
+      overflow: hidden; }
     main #contacts .cont [type='submit'] {
       background: #00B395;
       color: white;

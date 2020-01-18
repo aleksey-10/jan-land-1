@@ -1,6 +1,6 @@
-@import 'variables';
-@import 'mixins';
-@import 'default';
+@import 'imports/variables';
+@import 'imports/mixins';
+@import 'imports/default';
 
 @media screen and (max-width: 1200px) {
 	
@@ -35,7 +35,7 @@
 				
 				width: 100%;
 				left: 100%;
-				transition: left 0.25s; 
+				transition: all 0.25s; 
 			}
 
 			
@@ -91,6 +91,7 @@
 			>div {
 				flex-wrap: nowrap;
 				flex-direction: column;
+				margin: $def-pad;
 			}
 
 			.cont { 

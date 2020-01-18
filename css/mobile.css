@@ -89,9 +89,9 @@ body {
         z-index: 1;
         width: 100%;
         left: 100%;
-        -webkit-transition: left 0.25s;
-        -o-transition: left 0.25s;
-        transition: left 0.25s; }
+        -webkit-transition: all 0.25s;
+        -o-transition: all 0.25s;
+        transition: all 0.25s; }
         header #headContent #menu ul {
           background: rgba(140, 140, 140, 0.9);
           -webkit-box-orient: vertical;
@@ -157,7 +157,8 @@ body {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
-    flex-direction: column; }
+    flex-direction: column;
+    margin: 10px; }
   main #contacts .cont {
     width: 350px;
     margin: 0;
