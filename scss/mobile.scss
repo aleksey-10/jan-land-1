@@ -1,0 +1,102 @@
+@import 'variables';
+@import 'mixins';
+@import 'default';
+
+@media screen and (max-width: 1200px) {
+	
+	header {
+		position: relative;
+
+		#headContent {
+			padding: 0;
+			
+			> div {	margin: 15px; }
+
+			#menu {
+				@include p-m();
+				position: fixed;
+				z-index: 1;
+
+				ul { 
+					background: rgba(140,140,140,0.9);
+					flex-direction: column;
+					flex-wrap: nowrap;
+				}
+
+				li { 
+					@include p-m();
+
+					padding: $def-pad*2;
+					border: none;
+					border-top: 1px solid $clr-rvr; 
+					text-align: center;
+					a { color: $clr-rvr; }
+				}
+				
+				width: 100%;
+				left: 100%;
+				transition: left 0.25s; 
+			}
+
+			
+
+			.button-item { 
+				display: inline-block; 
+				
+				border: none;
+				
+				.btn {
+					font-size: 1.25em;
+
+					&:active { color: $clr-ext; }
+				}
+
+			}
+			
+		}
+
+		#titleH {
+			@include setToCenter(300px);
+
+		}
+	}
+
+	main {
+		#about {
+			> div {
+				grid-row-gap: 0;
+				grid-template-columns: 1fr;
+
+				grid-template-areas: 
+					"title"
+					"carousel"
+					"abs";
+				.carousel { height: 400px;}
+			}
+		}
+		
+		#service {
+			ul {
+				@include flex-col();
+				margin: $def-pad;
+				li { 
+					margin-top: $def-pad; 
+					> div { margin: $def-pad; margin-top: $def-pad*2 }
+					h4 { max-width: 80%; }
+				}
+			}
+		}
+
+		#contacts {
+			>div {
+				flex-wrap: nowrap;
+				flex-direction: column;
+			}
+
+			.cont { 
+				width: 350px; margin: 0; margin-bottom: $def-pad;
+			}
+		}
+	}
+
+}
