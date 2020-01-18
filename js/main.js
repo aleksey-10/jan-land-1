@@ -36,7 +36,7 @@ hCont.querySelector('.button-item').addEventListener('click', function(event) {
 })
 
 menu.addEventListener('click', function(event){
-	if (event.target.tagName != 'A') return;
+	if (event.target.tagName != 'A' || document.body.clientWidth > mobWidth) return;
 	menu.style.left = '100%';
 	for ( let elem of hCont.querySelector('.button-item').children) {
 		elem.hidden = !elem.hidden; 
